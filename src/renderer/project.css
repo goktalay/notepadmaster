@@ -1,0 +1,143 @@
+/* Proje penceresi: klasör ağacı | sekmeli editör — FTP Masters site penceresiyle aynı görsel dil */
+
+.proj { display: flex; flex-direction: column; height: 100%; }
+body.resizing-col, body.resizing-col * { cursor: col-resize !important; user-select: none; }
+.hidden { display: none !important; }
+
+/* --- Üst çubuk ------------------------------------------------------------- */
+.site-bar {
+  height: 46px; flex: none; display: flex; align-items: center; gap: 10px; padding: 0 10px 0 8px;
+  background: var(--bg-2); border-bottom: 1px solid var(--border);
+  box-shadow: inset 0 -2px 0 color-mix(in srgb, var(--c, var(--accent)) 55%, transparent);
+}
+.site-bar > .icon-btn.active { color: var(--accent); }
+.site-title { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+.site-name { font-weight: 700; font-size: 14px; white-space: nowrap; }
+.site-sub { color: var(--text-3); font-family: var(--mono); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-actions { margin-inline-start: auto; display: flex; align-items: center; gap: 4px; }
+.bar-actions .mtk-mt { margin-inline-start: 8px; }
+.status-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; background: var(--warn); box-shadow: 0 0 0 3px rgba(251, 191, 36, .15); }
+.status-dot.on { background: var(--ok); box-shadow: 0 0 0 3px rgba(52, 211, 153, .15); }
+.status-dot.off { background: var(--err); box-shadow: 0 0 0 3px rgba(248, 113, 113, .15); }
+.tag {
+  display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-2); padding: 3px 8px; border-radius: 20px;
+  background: var(--surface-2); border: 1px solid var(--border); white-space: nowrap;
+}
+.tag svg.i { width: 12px; height: 12px; }
+.tag.proto { font-weight: 700; letter-spacing: .3px; }
+.tag.proto svg.i { color: var(--ok); }
+
+/* --- Araç çubuğu ----------------------------------------------------------- */
+.toolbar {
+  flex: none; display: flex; align-items: center; gap: 2px; height: 36px; padding: 0 8px;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+}
+.toolbar .icon-btn { width: 30px; height: 28px; }
+.toolbar .icon-btn:disabled { opacity: .35; cursor: default; background: none; }
+.toolbar .icon-btn.active { color: var(--accent); background: rgba(34, 211, 238, .1); }
+.tb-sep { width: 1px; height: 18px; background: var(--border); margin: 0 6px; }
+
+/* --- Gövde ----------------------------------------------------------------- */
+.proj-body { flex: 1; min-height: 0; display: flex; }
+.col-tree { flex: none; width: 300px; display: flex; flex-direction: column; min-width: 0; background: var(--bg-2); }
+.col-tree.closed { display: none; }
+.col-editor { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; background: var(--bg); }
+
+.vsplit { width: 1px; flex: none; position: relative; z-index: 5; cursor: col-resize; background: var(--border); }
+.vsplit::before { content: ''; position: absolute; top: 0; bottom: 0; left: -3px; width: 7px; }
+.vsplit:hover, .vsplit.active { background: var(--accent); }
+
+.panel-head {
+  display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 6px 0 10px; flex: none;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+}
+.panel-ico { display: inline-flex; color: var(--accent); }
+.panel-ico svg.i { width: 15px; height: 15px; }
+.panel-title { font-size: 11.5px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; color: var(--text-2); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.panel-actions { display: flex; }
+.panel-actions .icon-btn { width: 26px; height: 26px; }
+.panel-actions .icon-btn svg.i { width: 15px; height: 15px; }
+
+/* --- Ağaç ------------------------------------------------------------------ */
+.tree { flex: 1; min-height: 0; overflow: auto; padding: 4px 0 20px; outline: none; font-size: 13px; }
+.tr-row {
+  display: flex; align-items: center; gap: 5px; height: 26px; padding-inline-end: 8px; cursor: default; white-space: nowrap;
+  border-inline-start: 2px solid transparent;
+}
+.tr-row:hover { background: var(--surface-2); }
+.tr-row.sel { background: rgba(34, 211, 238, .12); }
+.tree:focus .tr-row.sel { background: rgba(34, 211, 238, .2); border-inline-start-color: var(--accent); }
+.tr-row.open .tr-name { color: var(--accent); }
+.tr-chev { width: 14px; display: inline-flex; color: var(--text-3); flex: none; }
+.tr-chev svg.i { width: 13px; height: 13px; }
+.tr-row svg.ti-dir { color: #fbbf24; width: 16px; height: 16px; }
+.ti-file { display: inline-flex; }
+.ti-file svg.i { width: 15px; height: 15px; }
+.tr-name { overflow: hidden; text-overflow: ellipsis; }
+.tr-row .spin { width: 11px; height: 11px; color: var(--accent); margin-inline-start: 4px; }
+.tr-note { padding: 6px 12px; color: var(--text-3); font-size: 12px; }
+.tr-note.err { color: var(--err); white-space: normal; }
+.tr-note .spin { display: inline-block; color: var(--accent); }
+[dir="rtl"] .tr-chev svg.i { transform: scaleX(-1); }
+
+/* --- Sekmeler -------------------------------------------------------------- */
+.tabs-bar {
+  flex: none; display: flex; height: 36px; overflow-x: auto; overflow-y: hidden;
+  background: var(--bg-2); border-bottom: 1px solid var(--border);
+}
+.tabs-bar::-webkit-scrollbar { height: 3px; }
+.tab {
+  display: flex; align-items: center; gap: 7px; padding: 0 6px 0 12px; max-width: 240px; flex: none; cursor: default;
+  border-inline-end: 1px solid var(--border); color: var(--text-2); position: relative;
+}
+.tab:hover { background: var(--surface); color: var(--text); }
+.tab.on { background: var(--bg); color: var(--text); }
+.tab.on::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--accent-grad); }
+.tab-ico { display: inline-flex; color: var(--accent); }
+.tab-ico svg.i { width: 14px; height: 14px; }
+.tab-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12.5px; }
+.tab.dirty .tab-name { font-style: italic; }
+.tab-x {
+  display: inline-grid; place-items: center; width: 20px; height: 20px; border: none; border-radius: 5px; background: none;
+  color: var(--text-3); cursor: pointer; flex: none;
+}
+.tab-x svg.i { width: 13px; height: 13px; grid-area: 1 / 1; }
+.tab-x .dot { display: none; color: var(--accent); }
+.tab-x:hover { background: var(--surface-3); color: var(--text); }
+.tab:not(:hover):not(.on) .tab-x svg:not(.dot) { visibility: hidden; }
+.tab.dirty .tab-x:not(:hover) svg:not(.dot) { display: none; }
+.tab.dirty .tab-x:not(:hover) .dot { display: block; }
+.tab .spin { width: 12px; height: 12px; color: var(--accent); margin: 0 4px; }
+
+/* --- Editör ---------------------------------------------------------------- */
+.editor-wrap { flex: 1; min-height: 0; position: relative; }
+.editor { position: absolute; inset: 0; }
+.editor-empty { position: absolute; inset: 0; display: grid; place-items: center; overflow: auto; }
+.empty-inner { display: grid; justify-items: center; gap: 10px; padding: 30px; text-align: center; }
+.empty-inner img { width: 72px; height: 72px; border-radius: 18px; opacity: .9; box-shadow: 0 10px 28px rgba(34, 211, 238, .18); }
+.empty-title { font-size: 18px; font-weight: 700; }
+.empty-hint { color: var(--text-3); max-width: 440px; line-height: 1.5; }
+.keys { display: grid; grid-template-columns: auto auto; gap: 7px 14px; margin-top: 14px; font-size: 12.5px; color: var(--text-2); text-align: start; }
+.keys .kbd {
+  justify-self: end; font-family: var(--mono); font-size: 11.5px; padding: 2px 7px; border-radius: 5px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+}
+
+/* --- Durum çubuğu ---------------------------------------------------------- */
+.status-bar {
+  height: 28px; flex: none; display: flex; align-items: center; gap: 4px; padding: 0 8px 0 12px;
+  background: var(--bg-2); border-top: 1px solid var(--border); font-size: 11.5px; color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.status-bar .grow { flex: 1; }
+.st-path { font-family: var(--mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; direction: ltr; }
+.st-item {
+  height: 22px; padding: 0 8px; border: none; border-radius: 5px; background: none; color: var(--text-2); cursor: pointer; white-space: nowrap;
+  font-size: 11.5px; display: inline-flex; align-items: center;
+}
+button.st-item:hover { background: var(--surface-3); color: var(--text); }
+span.st-item { cursor: default; color: var(--accent); }
+span.st-item:empty { display: none; }
+
+/* Monaco: uygulamanın kaydırma çubukları ve bağlam menüsüyle uyum */
+.monaco-editor .margin, .monaco-editor .monaco-editor-background { transition: background .15s; }

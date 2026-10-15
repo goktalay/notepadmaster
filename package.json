@@ -1,0 +1,74 @@
+{
+  "name": "notepad-master",
+  "productName": "Notepad Master",
+  "version": "1.0.0",
+  "description": "SSH, FTP/FTPS/SFTP ve yerel klasörlerdeki dosyaları düzenleyen kod editörü",
+  "main": "src/main.js",
+  "author": "Notepad Master",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "icon": "node scripts/make-icon.js",
+    "dist": "electron-builder --win",
+    "dist:portable": "electron-builder --win portable"
+  },
+  "dependencies": {
+    "basic-ftp": "^5.0.5",
+    "iconv-lite": "^0.6.3",
+    "monaco-editor": "0.52.2",
+    "ssh2": "^1.16.0"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "png-to-ico": "^2.1.8",
+    "sharp": "^0.33.5"
+  },
+  "build": {
+    "appId": "com.notepadmaster.app",
+    "productName": "Notepad Master",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "build/icon.png",
+      "package.json",
+      "!node_modules/monaco-editor/esm/**",
+      "!node_modules/monaco-editor/dev/**",
+      "!node_modules/monaco-editor/min-maps/**",
+      "!node_modules/monaco-editor/monaco.d.ts"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "artifactName": "Notepad-Master-Setup-${version}.exe",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Notepad Master",
+      "include": "build/installer.nsh",
+      "menuCategory": "Mastertool"
+    },
+    "portable": {
+      "artifactName": "Notepad-Master-Portable-${version}.exe"
+    }
+  }
+}

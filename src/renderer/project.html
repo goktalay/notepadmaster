@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; worker-src 'self' blob: data:">
+  <title>Notepad Master</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="mastertool.css">
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <div class="proj">
+    <header class="site-bar">
+      <button class="icon-btn" id="btnTree"></button>
+      <span class="status-dot" id="dot"></span>
+      <div class="site-title">
+        <span class="site-name" id="projName"></span>
+        <span class="site-sub" id="projSub"></span>
+      </div>
+      <span id="projKind"></span>
+      <div class="bar-actions">
+        <button class="btn sm ghost" id="btnReconnect"></button>
+        <button class="icon-btn" id="btnTheme"></button>
+        <button class="icon-btn" id="btnSettings"></button>
+      </div>
+    </header>
+
+    <div class="toolbar" id="toolbar"></div>
+
+    <div class="proj-body">
+      <aside class="col-tree" id="colTree">
+        <div class="panel-head">
+          <span class="panel-ico" id="treeIco"></span>
+          <span class="panel-title" id="treeTitle"></span>
+          <div class="panel-actions">
+            <button class="icon-btn" data-a="newFile"></button>
+            <button class="icon-btn" data-a="newFolder"></button>
+            <button class="icon-btn" data-a="refresh"></button>
+            <button class="icon-btn" data-a="collapse"></button>
+          </div>
+        </div>
+        <div class="tree" id="tree" tabindex="0"></div>
+      </aside>
+      <div class="vsplit" id="splitTree"></div>
+
+      <section class="col-editor">
+        <div class="tabs-bar" id="tabs"></div>
+        <div class="editor-wrap">
+          <div class="editor" id="editor"></div>
+          <div class="editor-empty" id="empty"></div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="status-bar" id="status">
+      <span id="stPath" class="st-path"></span>
+      <span class="grow"></span>
+      <button class="st-item" id="stPos"></button>
+      <button class="st-item" id="stIndent"></button>
+      <button class="st-item" id="stEnc"></button>
+      <button class="st-item" id="stEol"></button>
+      <button class="st-item" id="stLang"></button>
+      <span class="st-item" id="stZoom"></span>
+    </footer>
+  </div>
+
+  <script src="../i18n.js"></script>
+  <script src="../defaults.js"></script>
+  <script src="ui.js"></script>
+  <script src="editorform.js"></script>
+  <script src="settings.js"></script>
+  <script src="mastertool.js"></script>
+  <script src="../../node_modules/monaco-editor/min/vs/loader.js"></script>
+  <script src="themes.js"></script>
+  <script src="tree.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>
