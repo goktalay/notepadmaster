@@ -1,0 +1,74 @@
+[
+  {
+    "file": "01-ana-ekran-gece.png",
+    "theme": "dark",
+    "title": "All your connections on one screen",
+    "caption": "SSH, FTP, local folder and single-file projects as cards and folders"
+  },
+  {
+    "file": "02-ana-ekran-gunduz.png",
+    "theme": "light",
+    "title": "Light theme",
+    "caption": "Dark, Light, or a System theme that follows Windows"
+  },
+  {
+    "file": "03-yeni-baglanti-ssh-gece.png",
+    "theme": "dark",
+    "title": "New connection: 4 options",
+    "caption": "SSH Project, FTP Project, Local Folder, Project File; one-click test"
+  },
+  {
+    "file": "04-klasor-sec-gece.png",
+    "theme": "dark",
+    "title": "Pick the folder on the server",
+    "caption": "After the test, browse the server to choose the project folder"
+  },
+  {
+    "file": "05-proje-penceresi-gece.png",
+    "theme": "dark",
+    "title": "Tree and tabbed editor",
+    "caption": "Server folder tree on the left, syntax-highlighted tabs on the right"
+  },
+  {
+    "file": "06-proje-penceresi-gunduz.png",
+    "theme": "light",
+    "title": "Every language, its own syntax",
+    "caption": "PHP, JavaScript, CSS and 80+ languages detected automatically"
+  },
+  {
+    "file": "07-bul-degistir-gece.png",
+    "theme": "dark",
+    "title": "Find and replace",
+    "caption": "With regular expressions, match case and whole word"
+  },
+  {
+    "file": "08-cakisma-gece.png",
+    "theme": "dark",
+    "title": "Change protection",
+    "caption": "Asks before saving if someone changed the file on the server"
+  },
+  {
+    "file": "09-notepadpp-ayarlari-gece.png",
+    "theme": "dark",
+    "title": "Notepad++ settings per connection",
+    "caption": "Encoding, line endings, indentation, theme, font and save rules"
+  },
+  {
+    "file": "10-kodlama-gece.png",
+    "theme": "dark",
+    "title": "Encoding control",
+    "caption": "Convert or reopen as UTF-8, UTF-8 BOM, Windows-1254 ANSI and more"
+  },
+  {
+    "file": "11-ftp-baglantisi-gunduz.png",
+    "theme": "light",
+    "title": "FTP, FTPS and SFTP",
+    "caption": "FTP Masters protocols: Implicit, Explicit SSL/TLS and SFTP"
+  },
+  {
+    "file": "12-ayarlar-gunduz.png",
+    "theme": "light",
+    "title": "Mastertool settings",
+    "caption": "8 languages, theme, start with Windows and the system tray"
+  }
+]

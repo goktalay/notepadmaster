@@ -217,11 +217,11 @@
     'kind.localHint': 'A folder on this computer', 'kind.fileHint': 'Edit a single file',
 
     'app.searchPh': 'Search connections…  (Ctrl+F)', 'app.newConn': 'New connection', 'app.settings': 'Settings',
-    'app.stats': '{c} connections · {f} folders', 'app.welcome': 'Welcome', 'app.results': 'Results for “{q}”',
+    'app.stats': 'Connections: {c} · Folders: {f}', 'app.welcome': 'Welcome', 'app.results': 'Results for “{q}”',
     'app.all': 'All connections',
     'app.welcomeHint': 'Add an SSH or FTP server, a local folder or a single file.<br>Double-click a card to open the project in its own window.',
     'app.folders': 'Folders', 'app.connections': 'Connections', 'app.dblHint': 'Double-click a card to open it',
-    'app.noMatch': 'No matching connections.', 'app.folderCount': '{n} connections',
+    'app.noMatch': 'No matching connections.', 'app.folderCount': 'Connections: {n}',
     'app.newConnHere': 'New connection in this folder', 'app.newSubfolder': 'New subfolder', 'app.keyTag': 'Key',
     'app.duplicate': 'Duplicate', 'app.moveToFolder': 'Move to folder…', 'app.connMoved': 'Connection moved',
     'app.folderIntoSelf': 'A folder cannot be moved into itself', 'app.folderPh': 'e.g. Customers', 'app.renameFolder': 'Rename folder',
