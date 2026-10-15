@@ -123,6 +123,8 @@ git push origin v1.0.0
 
 Sürüm numarası etiketten alınır; `package.json`'ı elle değiştirmek gerekmez.
 
+Etiket göndermek yerine Actions › Release › **Run workflow** ile `version` alanına sürüm (ör. `1.0.1`) yazılarak da yayınlanabilir; `v1.0.1` etiketi o commit'te otomatik oluşturulur. Alan boş bırakılırsa yalnız derlenir.
+
 Etiketle yayınlanan sürüm ayrıca notepadmaster.com'a yüklenir (`scripts/upload-notepadmaster.sh`, ≤ 90 MB parçalar halinde; depo secret'ı `NOTEPADM_RELEASE_KEY`).
 
 ## Bilinen sınırlar
