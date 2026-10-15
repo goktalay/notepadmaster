@@ -830,6 +830,7 @@ async function init() {
     mouseWheelZoom: true,
     unicodeHighlight: { ambiguousCharacters: false },
     stickyScroll: { enabled: false },
+    find: { addExtraSpaceOnTop: false, seedSearchStringFromSelection: 'selection' },
   });
   editor.onDidChangeCursorPosition(paintPos);
   editor.onDidChangeCursorSelection(paintPos);

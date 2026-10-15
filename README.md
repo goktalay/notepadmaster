@@ -34,8 +34,12 @@ Derlenmiş exe'ler [Releases](https://github.com/goktalay/notepadmaster/releases
   - Renk teması: Mastertool Gece/Gündüz (otomatik), Obsidian, Monokai, VS Dark/Light, Solarized Light, Yüksek Kontrast
   - Yazı tipi ve boyutu, kenar çizgileri (ör. 80,120), satır kaydırma, satır numaraları, geçerli satır vurgusu, akıllı vurgulama, girinti kılavuzları, kod katlama, parantez renklendirme, mini harita, boşluk/sekme gösterimi, görünmez karakterler
   - Kaydetme: satır sonu boşluklarını silme, dosya sonuna satır sonu ekleme, kaydetmeden önce sunucuda değişiklik kontrolü, otomatik kaydetme (sn)
-- **Ayarlar:** Gece / Gündüz / Sistem teması (üst çubuktaki güneş/ay düğmesiyle de değişir), Türkçe / İngilizce, editör varsayılanları, çalışma kopyası klasörünü açma ve temizleme.
-- **Mastertool hesabı:** uygulama Mastertool hesabıyla (e-posta ve şifre) açılır. "Beni hatırla" ile oturum saklanır; çevrimdışıyken son oturumla yerel bağlantılarla çalışılır. Kayıt, şifremi unuttum ve hesap sayfaları [notepadmaster.com](https://notepadmaster.com) üzerinden açılır.
+- **Ayarlar** (Mastertool ortak iskeleti, solda sekmeler):
+  - **Genel:** 8 dil (Türkçe, English, Français, Deutsch, Español, العربية, 中文, Русский; Arapçada arayüz sağdan sola, editör içeriği ve yollar soldan sağa), tema Gece / Gündüz / Sistem tercihi (varsayılan Sistem; üst çubuktaki güneş/ay düğmesiyle de değişir), Windows açılınca başlatma, küçültünce ve kapatınca sistem tepsisine gizleme. Tepsi menüsünden projeler hızlıca açılır.
+  - **Hesap:** senkronu açma/kapatma, şimdi senkronize etme, sunucu kopyasını silme, Hesabım (web), çıkış.
+  - **Editör:** Notepad++ ayarlarının genel varsayılanları, çalışma kopyası klasörünü açma ve temizleme.
+  - **Hakkında:** sürüm, güncellemeleri denetleme, açık kaynak lisansları.
+- **Mastertool hesabı:** uygulama Mastertool hesabıyla (e-posta ve şifre) açılır. "Beni hatırla" ile oturum saklanır; çevrimdışıyken son oturumla yerel bağlantılarla çalışılır. Kayıt, şifremi unuttum ve hesap sayfaları [notepadmaster.com](https://notepadmaster.com) üzerinden uygulamanın diliyle ve temasıyla açılır.
 - **Uçtan uca şifreli senkron:** bağlantılar, klasörler, editör ayarları ve genel ayarlar AES-256-GCM ile şifrelenip hesaba yedeklenir. Anahtar şifrenizden cihazda türetilir (PBKDF2 + HKDF); sunucu içeriği okuyamaz. Özel anahtarlar içerikleriyle taşınır. Yerel klasör/dosya yolları, açık sekmeler ve çalışma kopyaları her cihazda ayrı kalır: başka bilgisayarda yerel bir kart ilk açılışta yolu sorar. Ayarlar › Genel'den kapatılabilir ya da sunucu kopyası silinebilir.
 - **Mastertool düğmesi:** ana pencerenin ve proje penceresinin sağ üst köşesinde, SSH Master / FTP Masters / SQL Master ile aynı animasyonlu düğme. Tıklanınca mastertool.download uygulamanın dili ve gece/gündüz temasıyla açılır.
 - **Yeni sürüm bildirimi:** yeni sürüm çıkınca ana pencerede şerit görünür; indirme notepadmaster.com hesabınızdandır.
@@ -80,7 +84,8 @@ Tüm veriler `%APPDATA%\Notepad Master\` altındadır:
                 "smartHighlight": true, "rulers": "", "trimTrailing": false, "finalNewline": false,
                 "checkRemoteChange": true, "autoSave": 0 }
   }],
-  "settings": { "appTheme": "dark", "language": null, "editor": { /* yukarıdaki alanlar */ }, "treeWidth": 300, "treeOpen": true },
+  "settings": { "appTheme": "system", "language": null, "editor": { /* yukarıdaki alanlar */ },
+                "treeWidth": 300, "treeOpen": true, "minimizeToTray": true, "closeToTray": false, "openAtLogin": false },
   "syncMeta": { "<öğe id>": { "kind": "connection", "hash": "…", "updated_at": 0, "rev": 1, "device": "…", "deleted": false } }
 }
 ```
@@ -89,7 +94,7 @@ Tüm veriler `%APPDATA%\Notepad Master\` altındadır:
 
 - `kind: "connection"`: `data` alanları `createdAt, name, kind, host, port, protocol, username, loginMethod, authType, comments, folderId, color, rootDir, nameEncoding, showHidden, exclude, restoreTabs, editorMode, editor, hostKey` ile açık metin `password`, `passphrase` ve `privateKey` (anahtar dosyasının içeriği, yalnız SSH/SFTP + anahtar). **Gönderilmez:** `keyPath`, `localPath`, `openTabs`, `activeTab`.
 - `kind: "folder"`: `{ name, parentId }`
-- `kind: "settings"` (id `settings`): `{ appTheme, language, editor }`. **Gönderilmez:** `treeWidth`, `treeOpen`.
+- `kind: "settings"` (id `settings`): `{ appTheme, language, editor }`. **Gönderilmez:** `treeWidth`, `treeOpen`, `minimizeToTray`, `closeToTray`, `openAtLogin`.
 
 Birleştirme FTP Masters ile aynıdır: aynı id'de büyük `updated_at`, sonra büyük `rev`, sonra büyük cihaz id'si kazanır; silinenler 30 gün mezar taşı olarak tutulur.
 

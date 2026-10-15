@@ -511,7 +511,7 @@ async function editConnection(conn, folderId) {
       <div class="field"><label>${esc(t('form.name'))}</label><input class="input" id="f-name" placeholder="${esc(t('form.namePh'))}" value="${esc(c.name)}"></div>
 
       <div class="remote-only" style="display:grid;gap:14px">
-        <div class="row c-3-1 ftp-only">
+        <div class="row c-1-1 ftp-only">
           <div class="field"><label>${esc(t('type.protocol'))}</label><select class="input" id="f-proto">${sel([
             ['ftp', t('type.ftp')], ['ftps-implicit', t('type.ftpsImplicit')], ['ftps-ssl', t('type.ftpsSsl')], ['ftps-tls', t('type.ftpsTls')], ['sftp', t('type.sftp')],
           ], c.kind === 'ftp' ? c.protocol : 'ftp')}</select></div>

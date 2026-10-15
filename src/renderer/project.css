@@ -141,3 +141,8 @@ span.st-item:empty { display: none; }
 
 /* Monaco: uygulamanın kaydırma çubukları ve bağlam menüsüyle uyum */
 .monaco-editor .margin, .monaco-editor .monaco-editor-background { transition: background .15s; }
+
+/* Sağdan sola diller (Arapça): editör içeriği, dosya ağacı, sekme adları ve yollar her zaman soldan sağa */
+[dir="rtl"] .editor, [dir="rtl"] .monaco-editor { direction: ltr; }
+[dir="rtl"] .tr-name, [dir="rtl"] .tab-name, [dir="rtl"] .site-sub, [dir="rtl"] .st-path { direction: ltr; unicode-bidi: isolate; }
+[dir="rtl"] .tab.on::after { left: 0; right: 0; }

@@ -1,0 +1,74 @@
+[
+  {
+    "file": "01-ana-ekran-gece.png",
+    "theme": "dark",
+    "title": "Bağlantılar tek ekranda",
+    "caption": "SSH, FTP, lokal klasör ve tek dosya projeleri kartlar ve klasörlerle düzenli"
+  },
+  {
+    "file": "02-ana-ekran-gunduz.png",
+    "theme": "light",
+    "title": "Gündüz teması",
+    "caption": "Gece, Gündüz ya da Windows tercihine uyan Sistem teması"
+  },
+  {
+    "file": "03-yeni-baglanti-ssh-gece.png",
+    "theme": "dark",
+    "title": "Yeni bağlantı: 4 seçenek",
+    "caption": "SSH Projesi, FTP Projesi, Lokal Klasör, Proje Dosyası; bağlantı testi tek tıkla"
+  },
+  {
+    "file": "04-klasor-sec-gece.png",
+    "theme": "dark",
+    "title": "Klasörü sunucuda seçin",
+    "caption": "Testten sonra proje klasörü sunucuda gezinilerek seçilir"
+  },
+  {
+    "file": "05-proje-penceresi-gece.png",
+    "theme": "dark",
+    "title": "Ağaç ve sekmeli editör",
+    "caption": "Solda sunucudaki klasör ağacı, sağda dile göre renklendirilen sekmeler"
+  },
+  {
+    "file": "06-proje-penceresi-gunduz.png",
+    "theme": "light",
+    "title": "Her dil kendi sözdizimiyle",
+    "caption": "PHP, JavaScript, CSS ve 80’i aşkın dil otomatik algılanır"
+  },
+  {
+    "file": "07-bul-degistir-gece.png",
+    "theme": "dark",
+    "title": "Bul ve değiştir",
+    "caption": "Düzenli ifade, büyük/küçük harf ve tam sözcük seçenekleriyle"
+  },
+  {
+    "file": "08-cakisma-gece.png",
+    "theme": "dark",
+    "title": "Değişiklik koruması",
+    "caption": "Dosya sunucuda başkası tarafından değiştirildiyse kaydetmeden önce sorar"
+  },
+  {
+    "file": "09-notepadpp-ayarlari-gece.png",
+    "theme": "dark",
+    "title": "Bağlantı başına Notepad++ ayarları",
+    "caption": "Kodlama, satır sonu, girinti, tema, yazı tipi ve kaydetme kuralları"
+  },
+  {
+    "file": "10-kodlama-gece.png",
+    "theme": "dark",
+    "title": "Kodlama denetimi",
+    "caption": "UTF-8, UTF-8 BOM, Windows-1254 ANSI arasında çevirme ve yeniden açma"
+  },
+  {
+    "file": "11-ftp-baglantisi-gunduz.png",
+    "theme": "light",
+    "title": "FTP, FTPS ve SFTP",
+    "caption": "FTP Masters’ın protokolleri: Implicit, Explicit SSL/TLS ve SFTP"
+  },
+  {
+    "file": "12-ayarlar-gunduz.png",
+    "theme": "light",
+    "title": "Mastertool ayarları",
+    "caption": "8 dil, tema, Windows ile başlatma ve sistem tepsisi"
+  }
+]

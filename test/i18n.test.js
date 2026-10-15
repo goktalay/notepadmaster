@@ -25,3 +25,16 @@ test('i18n: kullanılan anahtarlar tr ve en sözlüklerinde var', () => {
   const enOnly = Object.keys(STRINGS.en).filter((k) => !(k in STRINGS.tr));
   assert.deepStrictEqual([trOnly, enOnly], [[], []]);
 });
+
+// Mastertool standardı: 8 dil sabit sırayla, hepsinde aynı anahtarlar ve aynı yer tutucular
+test('i18n: 8 dil, anahtar ve yer tutucu eşliği', () => {
+  const { LANGUAGES } = require('../src/i18n');
+  assert.deepStrictEqual(Object.keys(LANGUAGES), ['tr', 'en', 'fr', 'de', 'es', 'ar', 'zh', 'ru']);
+  assert.strictEqual(LANGUAGES.ar.dir, 'rtl');
+  const keys = Object.keys(STRINGS.en).sort();
+  const ph = (s) => (String(s).match(/\{\w+\}/g) || []).sort().join();
+  for (const l of Object.keys(LANGUAGES)) {
+    assert.deepStrictEqual(Object.keys(STRINGS[l]).sort(), keys, l);
+    for (const k of keys) assert.strictEqual(ph(STRINGS[l][k]), ph(STRINGS.en[k]), `${l} ${k}`);
+  }
+});

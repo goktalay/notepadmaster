@@ -4,6 +4,8 @@
 
 const $ = (s) => document.querySelector(s);
 
+document.body.appendChild(mastertoolButton()).classList.add('login-mt'); // sağ üst köşe (Mastertool standardı)
+
 $('#subtitle').textContent = t('auth.subtitle');
 $('#lEmail').textContent = t('auth.email');
 $('#lPassword').textContent = t('auth.password');
