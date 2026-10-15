@@ -6,7 +6,7 @@ Windows için kod ve metin editörü. Notepad++'ın yaptığı işi, [SSH Master
 
 Derlenmiş exe'ler [Releases](https://github.com/goktalay/notepadmaster/releases) sayfasındadır:
 
-- `Notepad-Master-Setup-x.y.z.exe`: kurulum (Mastertool klasörüne kurulur, Başlat menüsünde Mastertool › Notepad Master)
+- `Notepad-Master-Setup-x.y.z.exe`: kurulum (Mastertool klasörüne kurulur, Başlat menüsünde Master Tool › Notepad Master)
 - `Notepad-Master-Portable-x.y.z.exe`: kurulumsuz, tek dosya
 
 ## Özellikler
@@ -107,7 +107,7 @@ npm test
 npm run dist
 ```
 
-`dist/` altında kurulum ve taşınabilir exe oluşur. Simgeyi değiştirmek için `build/icon.svg` dosyasını düzenleyip `npm run icon` çalıştırın. `build/installer.nsh` tüm Mastertool uygulamalarında ortaktır (kurulum klasörü ve Başlat menüsü).
+`dist/` altında kurulum ve taşınabilir exe oluşur. Simgeyi değiştirmek için `build/icon.svg` dosyasını düzenleyip `npm run icon` çalıştırın. `build/installer.nsh` tüm Mastertool uygulamalarında ortaktır (kurulum klasörü ve Başlat menüsünde "Master Tool" klasörü).
 
 ## Sürüm yayınlama
 

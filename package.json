@@ -65,7 +65,7 @@
       "createDesktopShortcut": true,
       "shortcutName": "Notepad Master",
       "include": "build/installer.nsh",
-      "menuCategory": "Mastertool"
+      "menuCategory": "Master Tool"
     },
     "portable": {
       "artifactName": "Notepad-Master-Portable-${version}.exe"
