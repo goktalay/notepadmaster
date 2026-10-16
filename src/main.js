@@ -10,6 +10,7 @@ const NPDEF = require('./defaults');
 const { createRemote, friendlyError, PROTOCOLS } = require('./remote');
 const { ProjectSession } = require('./project');
 const { createAccount, API_BASE } = require('./account');
+const { createSso } = require('./sso');
 
 // Arayüz dili: ayarlarda seçilen ya da sistem dili (desteklenmiyorsa İngilizce)
 let t = I18N.createT('en');
@@ -136,8 +137,30 @@ let account = null;
 let loginWindow = null;
 let loginNotice = null; // giriş ekranında gösterilecek bilgi (ör. oturum süresi doldu)
 
+// Cihazda Mastertool ortak oturumu (Windows Kimlik Bilgisi Yöneticisi + %APPDATA%\Mastertool\sso-state.json).
+// Kimlik deposu açılamazsa uygulama yalnız kendi oturumuyla çalışır.
+function initSso() {
+  try {
+    return createSso({ stateDir: path.join(app.getPath('appData'), 'Mastertool') });
+  } catch {
+    return null;
+  }
+}
+
+// Ortak oturumla (şifresiz) açıldı: giriş ekranı açıksa ana pencereye geç
+function enterApp(backupFile) {
+  loginNotice = null;
+  if (!mainWindow) createMainWindow();
+  if (loginWindow) loginWindow.destroy();
+  if (backupFile) mainWindow.webContents.once('did-finish-load', () => mainWindow.webContents.send('account:backup', backupFile));
+  account.start();
+}
+
 function initAccount() {
   account = createAccount({
+    sso: initSso(),
+    onSharedSignIn: ({ backupFile }) => enterApp(backupFile),
+    onSharedSignOut: (code) => showLogin(code === 'app_disabled' ? t('auth.errAppDisabled') : null),
     userDataDir: app.getPath('userData'),
     appVersion: app.getVersion(),
     encrypt,
@@ -248,7 +271,10 @@ function createMainWindow() {
 
 function showMainWindow() {
   if (!account || !account.isLoggedIn()) {
-    if (loginWindow) loginWindow.focus(); else showLogin();
+    if (!loginWindow) return showLogin();
+    if (loginWindow.isMinimized()) loginWindow.restore();
+    loginWindow.show();
+    loginWindow.focus();
     return;
   }
   if (!mainWindow) createMainWindow();
@@ -528,12 +554,8 @@ ipcMain.handle('account:state', () => ({ ...account.state(), notice: loginNotice
 ipcMain.handle('account:login', async (_e, { email, password, remember }) => {
   try {
     const { backupFile } = await account.login(email, password, remember);
-    loginNotice = null;
     // Önce ana pencere açılır, sonra giriş penceresi kapanır (aksi halde uygulama kapanırdı)
-    if (!mainWindow) createMainWindow();
-    if (loginWindow) loginWindow.destroy();
-    if (backupFile) mainWindow.webContents.once('did-finish-load', () => mainWindow.webContents.send('account:backup', backupFile));
-    account.start();
+    enterApp(backupFile);
     return { ok: true };
   } catch (e) {
     return { ok: false, code: e.code || 'error', message: e.message };
@@ -805,11 +827,17 @@ if (!gotLock) {
   app.on('second-instance', showMainWindow);
   app.on('before-quit', () => (isQuitting = true));
 
-  app.whenReady().then(() => {
+  app.whenReady().then(async () => {
     loadStore();
     initAccount();
     // Uygulama girişsiz açılmaz. "Beni hatırla" ile saklı oturum varsa doğrudan açılır
     // (çevrimdışıyken yerel kütüphaneyle), oturum sunucuda düşmüşse giriş ekranına dönülür.
+    // Saklı oturum yoksa ve başka bir Mastertool uygulamasında giriş yapılmışsa ortak oturumla şifresiz açılır.
+    if (!account.isLoggedIn()) {
+      const r = await account.trySharedSignIn();
+      if (r.code === 'app_disabled') loginNotice = t('auth.errAppDisabled');
+    }
+    account.watchShared();
     if (account.isLoggedIn()) {
       createMainWindow();
       // Windows oturumuyla başlatıldıysa ve tepsiye küçültme açıksa doğrudan tepside başla

@@ -99,6 +99,7 @@ Bu kontrol bağlantı ayarından kapatılabilir.
   - Anahtar şifrenizden türetilir (PBKDF2 + HKDF) ve cihazdan çıkmaz; sunucu içeriği okuyamaz.
   - Senkronlanmayanlar: yerel klasör yolları, açık sekmeler, çalışma kopyaları, pencere düzeni.
 - **Oturum:** "Beni hatırla" seçiliyse oturum anahtarı DPAPI ile şifreli saklanır.
+- **Ortak oturum:** Bir Mastertool uygulamasında giriş yapınca diğerleri şifre sormadan açılır; birinde çıkış yapınca hepsi kapanır. Ortak oturum bilgisi Windows Kimlik Bilgisi Yöneticisi'nde, kullanıcıya özel ve DPAPI korumalı saklanır. Şifrenin kendisi saklanmaz.
 - **Özel anahtarlar:** Senkronla gelen özel anahtar dosyaları yalnız kullanıcıya açık izinlerle yazılır.
 - **SSH:** Host anahtarı doğrulanır (ilk bağlantıda kaydedilir, değişirse reddedilir).
 - **FTPS:** Sunucu sertifikası doğrulanmaz. Kendinden imzalı sertifikalı sunucular da kabul edilir (FileZilla / FTP Masters davranışı); bağlantı yine şifrelidir.
